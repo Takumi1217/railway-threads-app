@@ -1,11 +1,29 @@
+// src/App.tsx
+import React from "react";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import "./App.css";
+import ThreadList from "./ThreadList";
+import NewThread from "./NewThread";
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div>
-      <h1>Hello</h1>
-    </div>
+    <Router>
+      <div className="App">
+        <header className="App-header">
+          <h2>掲示板</h2>
+          <nav>
+            <Link to="/threads/new">スレッドをたてる</Link>
+          </nav>
+        </header>
+        <main>
+          <Routes>
+            <Route path="/" element={<ThreadList />} />
+            <Route path="/threads/new" element={<NewThread />} />
+          </Routes>
+        </main>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
