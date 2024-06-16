@@ -10,7 +10,9 @@ const App: React.FC = () => {
     <Router>
       <div className="App">
         <header className="App-header">
-          <h2>掲示板</h2>
+          <h2>
+            <Link to="">掲示板</Link>
+          </h2>
           <nav>
             <Link to="/threads/new">スレッドをたてる</Link>
           </nav>
