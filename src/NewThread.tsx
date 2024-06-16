@@ -42,6 +42,10 @@ const NewThread: React.FC = () => {
     }
   };
 
+  const handleBack = () => {
+    navigate("/");
+  };
+
   return (
     <div>
       <h1>新規スレッド作成</h1>
@@ -70,6 +74,7 @@ const NewThread: React.FC = () => {
         </button>
       </form>
       {error && <p>Error: {error}</p>}
+      <button onClick={handleBack}>戻る</button>
     </div>
   );
 };

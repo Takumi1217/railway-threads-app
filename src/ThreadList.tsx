@@ -41,7 +41,7 @@ const ThreadList: React.FC = () => {
   return (
     <div>
       <h2>新着スレッド</h2>
-      <ul>
+      <ul className="thread-list">
         {threads.map((thread) => (
           <li key={thread.id}>
             <p>{thread.title}</p>

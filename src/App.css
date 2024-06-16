@@ -1,0 +1,52 @@
+/* src/App.css */
+.App {
+    text-align: center;
+  }
+  
+  .App-header {
+    background-color: #7acb7a;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+  }
+  
+  .App-header h2 {
+    margin: 0;
+    color: white;
+  }
+  
+  .App-header nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: white;
+  }
+  
+  .App-header nav a:hover {
+    text-decoration: underline;
+    color: white;
+  }
+  
+  .thread-list {
+    list-style-type: none;
+    padding: 0;
+    border: 1px solid #333;
+    border-radius: 5px;
+    max-width: 600px;
+    margin: 20px auto;
+  }
+  
+  .thread-list li {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .thread-list li:last-child {
+    border-bottom: none;
+  }
+  
+  .thread-list p {
+    margin: 5px 0;
+  }
+  
