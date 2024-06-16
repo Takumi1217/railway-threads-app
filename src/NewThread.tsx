@@ -1,6 +1,7 @@
 // src/NewThread.tsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./NewThread.css";
 
 const NewThread: React.FC = () => {
   const [title, setTitle] = useState<string>("");
@@ -47,10 +48,10 @@ const NewThread: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="new-thread-container">
       <h1>新規スレッド作成</h1>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="form-group">
           <label htmlFor="title">タイトル</label>
           <input
             type="text"
@@ -60,7 +61,7 @@ const NewThread: React.FC = () => {
             required
           />
         </div>
-        <div>
+        <div className="form-group">
           <label htmlFor="content">内容</label>
           <textarea
             id="content"
@@ -69,12 +70,16 @@ const NewThread: React.FC = () => {
             required
           />
         </div>
-        <button type="submit" disabled={loading}>
-          {loading ? "作成中..." : "作成"}
-        </button>
+        <div className="button-group">
+          <button type="button" onClick={handleBack} className="back-button">
+            戻る
+          </button>
+          <button type="submit" disabled={loading} className="submit-button">
+            {loading ? "作成中..." : "作成"}
+          </button>
+        </div>
       </form>
-      {error && <p>Error: {error}</p>}
-      <button onClick={handleBack}>戻る</button>
+      {error && <p className="error-message">Error: {error}</p>}
     </div>
   );
 };
