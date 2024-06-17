@@ -1,7 +1,7 @@
-// ThreadList.tsx
+// ThreadDetail.tsx
 
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 interface Thread {
   id: string;
@@ -9,13 +9,14 @@ interface Thread {
   content: string;
 }
 
-const ThreadList: React.FC = () => {
-  const [threads, setThreads] = useState<Thread[]>([]);
+const ThreadDetail: React.FC = () => {
+  const { thread_id } = useParams(); // URL パラメータから thread_id を取得
+  const [thread, setThread] = useState<Thread | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch("https://railway.bulletinboard.techtrain.dev/threads")
+    fetch(`https://railway.bulletinboard.techtrain.dev/threads/${thread_id}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -23,14 +24,14 @@ const ThreadList: React.FC = () => {
         return response.json();
       })
       .then((data) => {
-        setThreads(data);
+        setThread(data);
         setLoading(false);
       })
       .catch((error) => {
         setError(error.message);
         setLoading(false);
       });
-  }, []);
+  }, [thread_id]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -40,21 +41,16 @@ const ThreadList: React.FC = () => {
     return <div>Error: {error}</div>;
   }
 
+  if (!thread) {
+    return <div>Thread not found</div>;
+  }
+
   return (
     <div>
-      <h2>新着スレッド</h2>
-      <ul className="thread-list">
-        {threads.map((thread) => (
-          <li key={thread.id}>
-            <Link to={`/threads/${thread.id}`}> {/* 各スレッドの詳細ページへのリンク */}
-              <p>{thread.title}</p>
-              <p>{thread.content}</p>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <h2>{thread.title}</h2>
+      <p>{thread.content}</p>
     </div>
   );
 };
 
-export default ThreadList;
+export default ThreadDetail;

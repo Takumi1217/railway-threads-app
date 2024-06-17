@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import "./App.css";
 import ThreadList from "./ThreadList";
 import NewThread from "./NewThread";
+import ThreadDetail from "./ThreadDetail";
 
 const App: React.FC = () => {
   return (
@@ -20,6 +21,7 @@ const App: React.FC = () => {
         <main>
           <Routes>
             <Route path="/" element={<ThreadList />} />
+            <Route path="/threads/:thread_id" element={<ThreadDetail />} />
             <Route path="/threads/new" element={<NewThread />} />
           </Routes>
         </main>
