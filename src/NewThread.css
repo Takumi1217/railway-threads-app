@@ -23,17 +23,11 @@
   font-weight: bold;
 }
 
-.form-group input,
-.form-group textarea {
+.form-group input {
   width: 90%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-}
-
-.form-group textarea {
-  resize: vertical;
-  height: 150px;
 }
 
 .button-group {

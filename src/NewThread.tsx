@@ -5,7 +5,6 @@ import "./NewThread.css";
 
 const NewThread: React.FC = () => {
   const [title, setTitle] = useState<string>("");
-  const [content, setContent] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
@@ -23,7 +22,7 @@ const NewThread: React.FC = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ title, content }),
+          body: JSON.stringify({ title }),
         }
       );
 
@@ -58,15 +57,6 @@ const NewThread: React.FC = () => {
             id="title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="content">内容</label>
-          <textarea
-            id="content"
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
             required
           />
         </div>
