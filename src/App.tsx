@@ -21,8 +21,8 @@ const App: React.FC = () => {
         <main>
           <Routes>
             <Route path="/" element={<ThreadList />} />
-            <Route path="/threads/:thread_id" element={<ThreadDetail />} />
             <Route path="/threads/new" element={<NewThread />} />
+            <Route path="/threads/:thread_id" element={<ThreadDetail />} />
           </Routes>
         </main>
       </div>

@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 interface Thread {
   id: string;
   title: string;
-  content: string;
 }
 
 const ThreadList: React.FC = () => {
@@ -27,7 +26,7 @@ const ThreadList: React.FC = () => {
         setLoading(false);
       })
       .catch((error) => {
-        setError(error.message);
+        setError(`Failed to fetch thread details: ${error.message}`);
         setLoading(false);
       });
   }, []);
@@ -46,9 +45,8 @@ const ThreadList: React.FC = () => {
       <ul className="thread-list">
         {threads.map((thread) => (
           <li key={thread.id}>
-            <Link to={`/threads/${thread.id}`}> {/* 各スレッドの詳細ページへのリンク */}
+            <Link to={`/threads/${thread.id}`}>
               <p>{thread.title}</p>
-              <p>{thread.content}</p>
             </Link>
           </li>
         ))}
