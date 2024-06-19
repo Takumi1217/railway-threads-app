@@ -6,12 +6,12 @@ import "./ThreadDetail.css";
 
 interface Post {
   id: string;
-  content: string;
+  post: string;
 }
 
 interface Thread {
   id: string;
-  title: string;
+  post: string;
   posts: Post[];
 }
 
@@ -61,7 +61,7 @@ const ThreadDetail: React.FC = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ content: newPostContent }),
+          body: JSON.stringify({ post: newPostContent }),
         }
       );
 
@@ -97,13 +97,13 @@ const ThreadDetail: React.FC = () => {
   return (
     <div className="ThreadDetailContainer">
       <div className="ThreadTitle">
-        <h1>{thread.title}</h1>
+        <h1>{thread.post}</h1>
       </div>
       <div className="ThreadPosts">
         <h2>投稿一覧</h2>
         <ul>
           {thread.posts.map((post) => (
-            <li key={post.id}>{post.content}</li>
+            <li key={post.id}>{post.post}</li>
           ))}
         </ul>
       </div>
