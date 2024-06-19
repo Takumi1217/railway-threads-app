@@ -96,9 +96,6 @@ const ThreadDetail: React.FC = () => {
 
   return (
     <div className="ThreadDetailContainer">
-      <div className="ThreadTitle">
-        <h1>{thread.post}</h1>
-      </div>
       <div className="ThreadPosts">
         <h2>投稿一覧</h2>
         <ul>
